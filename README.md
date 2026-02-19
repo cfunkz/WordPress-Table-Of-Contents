@@ -2,16 +2,12 @@
 
 **Collapsible table of contents** for WordPress posts. Supports `<h2>` and `<h3>` headings, nested lists, and easy customization of colors, font sizes, and spacing.
 
----
-
 ## Features
 
 * Clickable links scroll to headings in the post.
 * Collapsible `<details>/<summary>` style TOC.
 * Supports nested `<h3>` under `<h2>` automatically.
 * Easy to customize visual styles via PHP variables.
-
----
 
 ## Installation
 
