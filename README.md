@@ -58,9 +58,9 @@ Every post and page gets a **Smart TOC** meta box in the editor sidebar. One che
 
 ## Installation
 
-1. Download [Release](https://github.com/cfunkz/WordPress-Table-Of-Contents/releases/tag/v1.0.0)
-2. Install via **Plugins → Install Plugin**
-4. Configure at **Settings → Smart TOC**
+1. Download [!Release](https://github.com/cfunkz/WordPress-Table-Of-Contents/releases/tag/v1.0.0)
+2. Install `toc.zip` via **Plugins → Install Plugin**
+3. Configure at **Settings → Smart TOC**
 
 That's it.
 
