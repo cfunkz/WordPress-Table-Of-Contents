@@ -19,6 +19,8 @@ Smart TOC is the middleground: a single PHP file with a full admin panel integra
 - **IDs are injected cleanly** on headings that don't already have one
 - **Plays nice with Gutenberg, Classic Editor, and page builders**
 
+#### Screenshots
+
 ### Zero JavaScript
 The collapsible open/close behaviour is pure native HTML (`<details>` / `<summary>`). No jQuery. No script tags. No render-blocking. Works even with JavaScript disabled.
 
