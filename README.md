@@ -8,7 +8,7 @@ No JavaScript, surprisingly zero dependencies. One file plugin. Install it & nev
 
 Because some are getting out of context, some that load three scripts per page, or a barebones snippet that breaks the moment you look at it wrong.
 
-Smart TOC is the middleground: a single PHP file with a full admin panel integration, shortcode support, per-post overrides, and deep design customisation — built to blend into *any* site without fighting your theme.
+Smart TOC is the middleground: a single PHP file with a full admin panel integration, shortcode support, per-post overrides, and deep design customisati
 
 ## Features
 
