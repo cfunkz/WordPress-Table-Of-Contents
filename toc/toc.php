@@ -4,9 +4,12 @@
  * Plugin URI:   https://github.com/cfunkz/WordPress-Table-Of-Contents
  * Description:  Fully customisable, collapsible Table of Contents. Auto-injects into posts, supports shortcodes on any page, and is controlled entirely from the admin panel.
  * Version:      1.0.0
- * Author:       cFunkz
+ * Author:       cfunkz
  * License:      GPL-2.0-or-later
  * Text Domain:  smart-toc
+ * Requires at least: 5.0
+ * Tested up to:      6.7
+ * Requires PHP:      7.0
  */
 
 defined( 'ABSPATH' ) || exit;
