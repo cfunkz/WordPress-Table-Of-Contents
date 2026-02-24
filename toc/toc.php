@@ -491,6 +491,17 @@ add_action( 'save_post', function( int $id ): void {
 } );
 
 // ── Front-end CSS ──────────────────────────────────────────────────────────────
+
+// Helper: bullet char for inline ::before on center/right layouts
+function stoc_bullet_char( string $style ): string {
+	return match( $style ) {
+		'disc'   => '\\25AA',
+		'circle' => '\\25E6',
+		'square' => '\\25AA',
+		default  => '',
+	};
+}
+
 function stoc_css(): string {
 	$s      = stoc_get();
 	$levels = array_values((array)$s['heading_levels']);
@@ -551,7 +562,11 @@ function stoc_css(): string {
 		. 'details.smart-toc-wrap:not([open]) .smart-toc-toggle-open{display:none!important}'
 		. 'details.smart-toc-wrap:not([open]) .smart-toc-toggle-closed{display:inline!important}'
 		. 'ul.smart-toc-list{list-style:none;padding-left:' . $s['list_padding'] . ';margin:0}'
-		. 'li.smart-toc-item{list-style:' . $s['list_style'] . '!important;margin-bottom:' . $s['item_gap'] . ';text-align:' . $s['link_align'] . '}'
+		. 'li.smart-toc-item{list-style:' . ( $s['link_align'] === 'left' ? $s['list_style'] : 'none' ) . '!important;'
+		.   'margin-bottom:' . $s['item_gap'] . ';text-align:' . $s['link_align'] . '}'
+		. ( $s['link_align'] !== 'left' && $s['list_style'] !== 'none'
+			? 'li.smart-toc-item a::before{content:"' . stoc_bullet_char( $s['list_style'] ) . '";margin-right:.4em;opacity:.7}'
+			: '' )
 		. 'li.smart-toc-item a{text-decoration:none;color:' . $color($s['link_color']) . ';font-weight:' . $s['link_weight'] . '}'
 		. 'li.smart-toc-item a:hover{text-decoration:underline;color:' . $color($s['link_hover']) . '}'
 		. $indent_css
