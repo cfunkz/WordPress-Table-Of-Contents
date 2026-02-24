@@ -1,32 +1,82 @@
-# WordPress Collapsible Table of Contents
+# Smart TOC
 
-**Collapsible table of contents** for WordPress posts. Supports `<h2>` and `<h3>` headings, nested lists, and easy customization of colors, font sizes, and spacing.
+Table of Contents plugin for WordPress. Zero JavaScript on the front end — just a native `<details>`/`<summary>` element styled with generated CSS. Collapses and expands without a single line of JS.
 
-## Features
+## What it does
 
-* Clickable links scroll to headings in the post.
-* Collapsible `<details>/<summary>` style TOC.
-* Supports nested `<h3>` under `<h2>` automatically.
-* Easy to customize visual styles via PHP variables.
+Scans your post content for headings, builds an anchor-linked list, and drops it before (or after) the content. That's it, no scripts.
+
+Fonts, colours, borders, transparency, alignment, bullet style, indentation — and a custom CSS field with a selector reference for anything beyond the UI.
 
 ## Installation
 
-1. Copy the PHP snippet to your theme’s `functions.php` file or create a small plugin file like `toc-collapsible.php` in `wp-content/plugins/`.
-2. Activate the plugin if using a standalone file, or reload the theme if adding to `functions.php`.
-3. Customize TOC appearance by editing the variables at the top of the snippet:
+1. Download `toc.php`
+2. Upload it to `/wp-content/plugins/smart-toc/`
+3. Activate from **Plugins → Installed Plugins**
+4. Configure at **Settings → Smart TOC**
 
-```php
-// Example variables you can change:
-$toc_font_size      = '0.95rem';
-$toc_margin_bottom  = '2rem';
-$toc_padding_left   = '1.25rem';
-$toc_h3_padding     = '1.5rem';
-$toc_text_color     = '#1e293b';
-$toc_link_hover     = 'underline';
-$toc_summary_font_weight = '600';
-$toc_summary_cursor = 'pointer';
-$toc_summary_margin_bottom = '0.5rem';
-$toc_summary_text_color = '#4f46e5';
+## Usage
+
+**Auto-inject** — turn on *Posts* and/or *Pages* in the Behaviour tab and the TOC appears automatically wherever there are enough headings.
+
+**Shortcode** — paste `[smart_toc]` anywhere in your content to place it manually. Supports inline overrides:
+
+```
+[smart_toc title="Contents" open="no" align="center" title_align="center" heading_levels="h2,h3" min_headings="2"]
 ```
 
-4. Save changes and view a single post — the Table of Contents should appear at the top automatically.
+**Disable per post** — a meta box on the edit screen lets you skip the TOC on any individual post or page.
+
+---
+
+## Shortcode attributes
+
+| Attribute | Values | Default |
+|---|---|---|
+| `title` | any text | *Table of Contents* |
+| `open` | `yes` / `no` | *yes* |
+| `align` | `left` / `center` / `right` | *left* |
+| `title_align` | `left` / `center` / `right` | *left* |
+| `link_align` | `left` / `center` / `right` | *left* |
+| `heading_levels` | `h2,h3,h4` … | *h2,h3* |
+| `min_headings` | number | *3* |
+
+---
+
+## Custom CSS selectors
+
+```css
+details.smart-toc-wrap        /* outer box */
+.smart-toc-summary            /* clickable title row */
+.smart-toc-title              /* title text */
+.smart-toc-toggle-open        /* icon when expanded */
+.smart-toc-toggle-closed      /* icon when collapsed */
+ul.smart-toc-list             /* the list */
+li.smart-toc-item             /* every item */
+li.smart-toc-item a           /* links */
+li.smart-toc-h2 / h3 / h4…   /* items by heading level */
+details.smart-toc-wrap[open]  /* state when expanded */
+```
+
+Example — float it to the right like a Wikipedia box:
+
+```css
+details.smart-toc-wrap {
+  float: right;
+  max-width: 280px;
+  margin: 0 0 1rem 1.5rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,.08);
+}
+```
+
+---
+
+## Requirements
+
+- WordPress 5.0+
+- PHP 7.4+
+- The `DOMDocument` PHP extension (standard in almost every host)
+
+## License
+
+GPL-2.0-or-later
